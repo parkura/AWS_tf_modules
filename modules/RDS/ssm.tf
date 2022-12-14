@@ -1,6 +1,6 @@
 
 
-//Generate Password
+/* //Generate Password
 resource "random_password" "main" {
   length           = 20
   special          = true #   Default: !@#$%&*()-_=+[]{}<>:?
@@ -19,4 +19,4 @@ resource "aws_ssm_parameter" "rds_password" {
 data "aws_ssm_parameter" "rds_password" {
   name       = "/prod/prod-mysql-rds/password"
   depends_on = [aws_ssm_parameter.rds_password]
-}
+} */

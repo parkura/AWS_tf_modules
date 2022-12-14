@@ -1,7 +1,7 @@
 
-data "aws_security_group" "allow-ssh-http-https-sg"{
+/* data "aws_security_group" "allow-ssh-http-https-sg"{
   name = "allow-ssh-http-https-sg"
-} 
+}  */
 
 
 /* resource "aws_db_instance" "prod" {
@@ -20,7 +20,7 @@ data "aws_security_group" "allow-ssh-http-https-sg"{
  */
 
 
-module "db" {
+/* module "db" {
   source  = "terraform-aws-modules/rds/aws"
 
   identifier = var.db_name
@@ -92,4 +92,4 @@ module "db" {
       ]
     },
   ]
-} 
+}  */

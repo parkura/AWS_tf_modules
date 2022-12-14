@@ -23,7 +23,6 @@ variable "subnets" {
   type = list
 }
 
-
 variable "lb_tg_arn" {
   type    = string
   default = ""
