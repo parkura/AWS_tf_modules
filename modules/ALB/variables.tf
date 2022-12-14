@@ -36,6 +36,6 @@ variable "alb_tg_name" {
 }
 
 variable "subnets" {
-  type = list
+  type = list(any)
 }
 

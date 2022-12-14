@@ -42,7 +42,7 @@ module "aws_alb_dev" {
 } */
 
 module "aws_asg_dev" {
-  depends_on  = [module.aws_vpc_dev, module.aws_ec2_dev, module.aws_alb_dev]
-  source      = "./modules/ASG"
-  subnets     = module.aws_vpc_dev.private_subnet_ids
+  depends_on = [module.aws_vpc_dev, module.aws_ec2_dev, module.aws_alb_dev]
+  source     = "./modules/ASG"
+  subnets    = module.aws_vpc_dev.private_subnet_ids
 }

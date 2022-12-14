@@ -1,4 +1,4 @@
-	
+
 output "vpc_name" {
   value = module.vpc.name
 }
@@ -21,11 +21,11 @@ output "private_subnet_ids" {
 
 output "aviability_zones" {
   value = module.vpc.azs
-} 
+}
 
 output "security_group_ids" {
   value = aws_security_group.allow-ssh-http.id
-} 
+}
 
 
 

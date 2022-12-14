@@ -1,23 +1,23 @@
-data "aws_security_group" "allow-ssh-http-https-sg"{
+data "aws_security_group" "allow-ssh-http-https-sg" {
   name = "allow-ssh-http-https-sg"
 }
 
 data "aws_ami" "amazon-linux-2" {
- most_recent = true
+  most_recent = true
 
- filter {
-   name   = "owner-alias"
-   values = ["amazon"]
- }
+  filter {
+    name   = "owner-alias"
+    values = ["amazon"]
+  }
 
- filter {
-   name   = "name"
-   values = ["amzn2-ami-hvm*"]
- }
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm*"]
+  }
 }
 
 module "asg" {
-  source  = "terraform-aws-modules/autoscaling/aws"
+  source = "terraform-aws-modules/autoscaling/aws"
 
   # Autoscaling group
   name = var.asg_name
@@ -61,7 +61,7 @@ module "asg" {
   launch_template_description = var.lt_description
   update_default_version      = true
 
-  image_id          = "${data.aws_ami.amazon-linux-2.id}"
+  image_id          = data.aws_ami.amazon-linux-2.id
   instance_type     = "t3.micro"
   ebs_optimized     = true
   enable_monitoring = true
@@ -151,10 +151,10 @@ module "asg" {
 
   tags = {
     Environment = "dev"
-    Owner   = "Soso Kumladze"
-    Project = "VRTX-TRP"
+    Owner       = "Soso Kumladze"
+    Project     = "VRTX-TRP"
   }
-} 
+}
 
 
 data "aws_lb_target_group" "dev-lb-tg" {
@@ -166,6 +166,6 @@ data "aws_lb_target_group" "dev-lb-tg" {
 # Create a new ALB Target Group attachment
 resource "aws_autoscaling_attachment" "asg_attachment_bar" {
   autoscaling_group_name = module.asg.autoscaling_group_id
-  lb_target_group_arn    = data.aws_lb_target_group.dev-lb-tg.arn 
-} 
+  lb_target_group_arn    = data.aws_lb_target_group.dev-lb-tg.arn
+}
 

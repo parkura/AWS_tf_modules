@@ -1,26 +1,26 @@
 
 variable "asg_name" {
-  type = string
+  type    = string
   default = "dev-asg"
 }
 
 variable "lt_name" {
-  type = string
+  type    = string
   default = "dev-asg"
 }
 
 variable "lt_description" {
-  type = string
+  type    = string
   default = "Launch template example"
 }
 
 variable "zone" {
-  type = string
+  type    = string
   default = "us-west-1b"
 }
 
 variable "subnets" {
-  type = list
+  type = list(any)
 }
 
 variable "lb_tg_arn" {

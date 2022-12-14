@@ -1,14 +1,14 @@
-data "aws_security_group" "allow-ssh-http-https-sg"{
+data "aws_security_group" "allow-ssh-http-https-sg" {
   name = "allow-ssh-http-https-sg"
 }
 
 
 resource "aws_lb" "application-lb" {
-  name               = var.alb_name
-  internal           = false
-  load_balancer_type = "application"
-  security_groups    = [data.aws_security_group.allow-ssh-http-https-sg.id]
-  subnets            = var.subnets[*]
+  name                       = var.alb_name
+  internal                   = false
+  load_balancer_type         = "application"
+  security_groups            = [data.aws_security_group.allow-ssh-http-https-sg.id]
+  subnets                    = var.subnets[*]
   enable_deletion_protection = true
 
   tags = var.tags
@@ -21,7 +21,7 @@ resource "aws_lb_target_group" "dev-lb-tg" {
   port        = 80
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
-  
+
   health_check {
     healthy_threshold   = var.health_check["healthy_threshold"]
     interval            = var.health_check["interval"]
@@ -47,7 +47,7 @@ resource "aws_lb_listener" "lb-http-listener" {
   port              = "80"
   protocol          = "HTTP"
   default_action {
-    type = "forward"
+    type             = "forward"
     target_group_arn = aws_lb_target_group.dev-lb-tg.arn
   }
 }

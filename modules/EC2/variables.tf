@@ -6,11 +6,11 @@ variable "tags" {
 }
 
 variable "subnet_id" {
-  type = list
+  type = list(any)
 }
 
 variable "ec2_name" {
-  type = string
+  type    = string
   default = "test_ec2"
 }
 
