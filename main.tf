@@ -35,11 +35,11 @@ module "aws_alb_dev" {
   instance_id = module.aws_ec2_dev.instance_id
 }
 
-/* module "aws_rds_dev" {
+module "aws_rds_dev" {
   depends_on = [module.aws_vpc_dev]
   source     = "./modules/RDS"
   #subnet_id  = module.aws_vpc_dev.private_subnet_ids
-} */
+}
 
 module "aws_asg_dev" {
   depends_on  = [module.aws_vpc_dev, module.aws_ec2_dev, module.aws_alb_dev]
