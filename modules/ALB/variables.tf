@@ -39,3 +39,14 @@ variable "subnets" {
   type = list(any)
 } 
 
+#
+
+variable "dns-name" {
+  type    = string
+  default = "cmcloudlab1816.info"
+}
+
+variable "site-name" {
+  type    = string
+  default = ""
+}

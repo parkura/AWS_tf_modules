@@ -67,4 +67,4 @@ output "rds_port" {
 output "rds_password" {
   value     = module.aws_rds_dev.rds_password
   sensitive = true
-} 
+}
