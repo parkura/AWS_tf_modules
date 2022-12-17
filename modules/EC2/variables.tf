@@ -1,16 +1,20 @@
-variable "tags" {
-  default = {
-    Owner   = "Soso Kumladze"
-    Project = "VRTX-TRP"
-  }
-}
-
 variable "subnet_id" {
   type = list(any)
 }
 
 variable "ec2_name" {
   type    = string
-  default = "test_ec2"
-}
+  default = "web_ec2"
+} 
 
+variable "instance_type" {
+  type    = string
+  default = "t2.micro"
+} 
+
+variable "tags" {
+  default = {
+    Name   = "web"
+    env = "dev"
+  }
+}

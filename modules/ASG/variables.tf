@@ -1,27 +1,18 @@
 
+variable "lc_name" {
+  type    = string
+  default = "dev-asg-lc"
+}
+
 variable "asg_name" {
   type    = string
   default = "dev-asg"
 }
 
-variable "lt_name" {
-  type    = string
-  default = "dev-asg"
-}
-
-variable "lt_description" {
-  type    = string
-  default = "Launch template example"
-}
-
-variable "zone" {
-  type    = string
-  default = "us-west-1b"
-}
-
 variable "subnets" {
   type = list(any)
 }
+
 
 variable "lb_tg_arn" {
   type    = string
@@ -31,5 +22,13 @@ variable "lb_tg_arn" {
 variable "lb_tg_name" {
   type    = string
   default = "dev-alb-tg"
+}   
+
+variable "tags" {
+  default = {
+    Owner   = "Soso Kumladze"
+    Project = "VRTX-TRP"
+  }
 }
+
 

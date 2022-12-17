@@ -1,11 +1,8 @@
 variable "env" {
-  type        = string
-  description = "environment name"
-  default     = "dev"
+  default = "dev"
 }
 
 variable "vpc_cidr" {
-  type    = string
   default = "10.0.0.0/16"
 }
 
@@ -18,19 +15,8 @@ variable "public_subnet_cidrs" {
 
 variable "private_subnet_cidrs" {
   default = [
-    "10.0.3.0/24",
-    "10.0.4.0/24",
-    "10.0.5.0/24",
-    "10.0.6.0/24",
-
-  ]
-}
-
-variable "aviability_zones" {
-  default = [
-    "us-east-1a",
-    "us-east-1b",
-    "us-east-1c"
+    "10.0.11.0/24",
+    "10.0.22.0/24",
   ]
 }
 
@@ -41,7 +27,20 @@ variable "tags" {
   }
 }
 
-variable "sg_name" {
+
+variable "web_sg_name" {
   type    = string
   default = "allow-ssh-http-https-sg"
-}
+} 
+
+variable "load_balancer_sg_name" {
+  type    = string
+  default = "load_balancer-http-https"
+} 
+
+variable "rds_sg_name" {
+  type    = string
+  default = "allow-3306-mysql"
+} 
+
+

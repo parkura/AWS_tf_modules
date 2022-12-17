@@ -1,13 +1,15 @@
-data "aws_security_group" "allow-ssh-http-https-sg" {
-  name = "allow-ssh-http-https-sg"
+
+data "aws_security_group" "alb_sg" {
+  name = "load_balancer-http-https"
 }
+
 
 
 resource "aws_lb" "application-lb" {
   name                       = var.alb_name
   internal                   = false
   load_balancer_type         = "application"
-  security_groups            = [data.aws_security_group.allow-ssh-http-https-sg.id]
+  security_groups            = [data.aws_security_group.alb_sg.id]
   subnets                    = var.subnets[*]
   enable_deletion_protection = true
 
@@ -50,7 +52,7 @@ resource "aws_lb_listener" "lb-http-listener" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.dev-lb-tg.arn
   }
-}
+} 
 
 
 

@@ -1,8 +1,9 @@
+
 output "instance_id" {
-  value = module.ec2-instance.id
+  value = aws_instance.web.id
 }
 
 output "instance_ami" {
-  value = module.ec2-instance.id
+  value = aws_instance.web.ami
 }
 

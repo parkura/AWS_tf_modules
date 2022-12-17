@@ -1,3 +1,4 @@
+
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
 
@@ -12,21 +13,18 @@ data "aws_ami" "amazon-linux-2" {
   }
 }
 
-data "aws_security_group" "allow-ssh-http-https-sg" {
+data "aws_security_group" "web-ssh-http-https" {
   name = "allow-ssh-http-https-sg"
 }
 
-module "ec2-instance" {
-  source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "4.2.1"
-
-  name                   = var.ec2_name
-  ami                    = data.aws_ami.amazon-linux-2.id
-  instance_type          = "t2.micro"
-  monitoring             = true
-  vpc_security_group_ids = [data.aws_security_group.allow-ssh-http-https-sg.id]
-  subnet_id              = var.subnet_id[0]
-
+resource "aws_instance" "web" {
+  ami = data.aws_ami.amazon-linux-2.id
+  subnet_id = var.subnet_id[0]
+  instance_type = var.instance_type
+  vpc_security_group_ids = [data.aws_security_group.web-ssh-http-https.id]
+  monitoring = false
+  user_data = file("${path.module}/web.sh")
   tags = var.tags
-}
+} 
+
 

@@ -13,12 +13,12 @@ provider "aws" {
   region = var.region
 }
 
-module "aws_vpc_dev" {
-  source = "./modules/VPC"
-}
-
 module "aws_s3_bucket" {
   source = "./modules/S3"
+}
+
+module "aws_vpc_dev" {
+  source = "./modules/VPC"
 }
 
 module "aws_ec2_dev" {
@@ -26,7 +26,7 @@ module "aws_ec2_dev" {
   source     = "./modules/EC2"
   subnet_id  = module.aws_vpc_dev.private_subnet_ids
 }
-
+ 
 module "aws_alb_dev" {
   depends_on  = [module.aws_vpc_dev, module.aws_ec2_dev]
   source      = "./modules/ALB"
@@ -38,11 +38,11 @@ module "aws_alb_dev" {
 module "aws_rds_dev" {
   depends_on = [module.aws_vpc_dev]
   source     = "./modules/RDS"
-  #subnet_id  = module.aws_vpc_dev.private_subnet_ids
-}
+  subnet_id  = module.aws_vpc_dev.private_subnet_ids
+} 
 
 module "aws_asg_dev" {
   depends_on = [module.aws_vpc_dev, module.aws_ec2_dev, module.aws_alb_dev]
   source     = "./modules/ASG"
   subnets    = module.aws_vpc_dev.private_subnet_ids
-}
+} 
