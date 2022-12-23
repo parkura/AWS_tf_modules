@@ -1,9 +1,11 @@
 
 output "instance_id" {
-  value = aws_instance.web.id
+  description = "Web instance ID."
+  value       = aws_instance.web.id
 }
 
 output "instance_ami" {
-  value = aws_instance.web.ami
+  description = "Web instance subnet AMI."
+  value       = aws_instance.web.ami
 }
 

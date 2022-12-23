@@ -1,8 +1,8 @@
+//Security group for ALB & ASG.
 resource "aws_security_group" "load_balancer_sg_name" {
-  name   = var.load_balancer_sg_name
+  name        = var.load_balancer_sg_name
   description = "alb-web"
-  vpc_id = aws_vpc.main.id
-
+  vpc_id      = aws_vpc.main.id
 
   dynamic "ingress" {
     for_each = ["80", "443"]
@@ -21,23 +21,22 @@ resource "aws_security_group" "load_balancer_sg_name" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-   tags = var.tags
+  tags = var.tags
 }
 
+//Security group for ec2.
 resource "aws_security_group" "web-ssh-http-https" {
-  name   = var.web_sg_name
+  name        = var.web_sg_name
   description = "ec2-web"
-  vpc_id = aws_vpc.main.id
-
+  vpc_id      = aws_vpc.main.id
 
   dynamic "ingress" {
     for_each = ["80", "22", "443"]
     content {
-      description = "allow http, https, ssh"
-      from_port   = ingress.value
-      to_port     = ingress.value
-      protocol    = "tcp"
+      description     = "allow http, https, ssh"
+      from_port       = ingress.value
+      to_port         = ingress.value
+      protocol        = "tcp"
       security_groups = [aws_security_group.load_balancer_sg_name.id]
     }
   }
@@ -48,15 +47,14 @@ resource "aws_security_group" "web-ssh-http-https" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
-   tags = var.tags
+  tags = var.tags
 }
 
-
+//Security group for RDS instance.
 resource "aws_security_group" "mysql_sg" {
   name        = var.rds_sg_name
   description = "Allow 3306 inbound traffic"
-  vpc_id = aws_vpc.main.id
+  vpc_id      = aws_vpc.main.id
 
   ingress {
     description = "TLS from VPC"
@@ -72,6 +70,5 @@ resource "aws_security_group" "mysql_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
   tags = var.tags
 }

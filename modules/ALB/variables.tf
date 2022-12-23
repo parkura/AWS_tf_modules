@@ -1,6 +1,6 @@
-
 variable "health_check" {
-  type = map(string)
+  description = "Load balancer healt checks."
+  type        = map(string)
   default = {
     "timeout"             = "10"
     "interval"            = "20"
@@ -11,8 +11,36 @@ variable "health_check" {
   }
 }
 
+variable "lb_settings" {
+  description = "Load balancer settings."
+  type        = map(string)
+  default = {
+    "target_type" = "instance"
+    "port"        = 80
+    "protocol"    = "HTTP"
+  }
+}
+
+variable "listener_settings" {
+  description = "aws_lb_listener HTTP & HTTPS settings."
+  type        = map(string)
+  default = {
+    "ssl_policy"  = "ELBSecurityPolicy-2016-08"
+    "port"        = "443"
+    "protocol"    = "HTTPS"
+    "type"        = "forward"
+    "status_code" = "HTTP_301"
+  }
+}
+
+variable "http_listener_default_action" {
+  description = "HTTP listener default action type."
+  type        = string
+  default = "redirect"
+}
 
 variable "tags" {
+  description = "tags of the load balancer & Target Geoup."
   default = {
     Owner   = "Soso Kumladze"
     Project = "VRTX-TRP"
@@ -20,33 +48,37 @@ variable "tags" {
 }
 
 variable "vpc_id" {
-  type = string
+  description = "VPC ID for the load balancer."
+  type        = string
 }
 
 variable "instance_id" {
-  type = string
+  description = "Instance ID for the target group attachment - test."
+  type        = string
+}
+
+variable "security_groups" {
+  description = "SG ID for the load balancer."
+  type        = string
 }
 
 variable "alb_name" {
-  default = "dev-alb"
+  description = "Name of the load balancer."
+  default     = "dev-alb"
 }
 
 variable "alb_tg_name" {
-  default = "dev-alb-tg"
+  description = "Name of the load balancer target group."
+  default     = "dev-alb-tg"
 }
 
 variable "subnets" {
-  type = list(any)
-} 
-
-#
-
-variable "dns-name" {
-  type    = string
-  default = "cmcloudlab1816.info"
+  description = "Public Subnets for the load balancer."
+  type        = list(any)
 }
 
-variable "site-name" {
-  type    = string
-  default = ""
+variable "certificate_arn" {
+  description = "The ARN of the aws-ssl certificate"
+  type        = string
 }
+

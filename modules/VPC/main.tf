@@ -6,7 +6,6 @@ resource "aws_vpc" "main" {
   tags       = merge(var.tags, { Name = "${var.env}-vpc" })
 }
 
-
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags   = merge(var.tags, { Name = "${var.env}-igw" })
@@ -22,7 +21,6 @@ resource "aws_subnet" "public_subnets" {
   tags                    = merge(var.tags, { Name = "${var.env}-public-${count.index + 1}" })
 }
 
-
 resource "aws_route_table" "public_subnets" {
   vpc_id = aws_vpc.main.id
   route {
@@ -32,13 +30,11 @@ resource "aws_route_table" "public_subnets" {
   tags = merge(var.tags, { Name = "${var.env}-route-public-subnets" })
 }
 
-
 resource "aws_route_table_association" "public_routes" {
   count          = length(aws_subnet.public_subnets[*].id)
   route_table_id = aws_route_table.public_subnets.id
   subnet_id      = aws_subnet.public_subnets[count.index].id
 }
-
 
 #-----NAT Gateways with Elastic IPs--------------------------
 resource "aws_eip" "nat" {
@@ -46,7 +42,6 @@ resource "aws_eip" "nat" {
   vpc   = true
   tags  = merge(var.tags, { Name = "${var.env}-nat-gw-${count.index + 1}" })
 }
-
 
 resource "aws_nat_gateway" "nat" {
   count         = length(var.private_subnet_cidrs)
@@ -64,7 +59,6 @@ resource "aws_subnet" "private_subnets" {
   tags              = merge(var.tags, { Name = "${var.env}-private-${count.index + 1}" })
 }
 
-
 resource "aws_route_table" "private_subnets" {
   count  = length(var.private_subnet_cidrs)
   vpc_id = aws_vpc.main.id
@@ -74,7 +68,6 @@ resource "aws_route_table" "private_subnets" {
   }
   tags = merge(var.tags, { Name = "${var.env}-route-private-subnet-${count.index + 1}" })
 }
-
 
 resource "aws_route_table_association" "private_routes" {
   count          = length(aws_subnet.private_subnets[*].id)
