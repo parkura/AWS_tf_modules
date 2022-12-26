@@ -43,10 +43,9 @@ variable "security_groups" {
 
 variable "tags" {
   description = "Common tags."
+  type        = map
   default = {
     Owner   = "Soso Kumladze"
     Project = "VRTX-TRP"
   }
 }
-
-

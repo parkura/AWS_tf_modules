@@ -58,5 +58,3 @@ resource "aws_lb_listener" "lb-http-listener" {
     }
   }
 }
-
-

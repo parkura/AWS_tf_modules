@@ -10,6 +10,7 @@ variable "s3_bucket_names" {
 
 variable "tags" {
   description = "Tags for the VPC."
+  type        = map
   default = {
     Owner   = "Soso Kumladze"
     Project = "VRTX-TRP"
@@ -69,4 +70,3 @@ variable "key_deletion" {
   type        = number
   default     = 10
 }
-

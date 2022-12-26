@@ -6,6 +6,7 @@ variable "db_name" {
 
 variable "tags" {
   description = "db instance tags."
+  type = map
   default = {
     Name = "mysql"
     env  = "dev"
@@ -31,7 +32,7 @@ variable "subnet_id" {
 variable "db_ssm_pass_name" {
   description = "The private subnet IDs for the DB instance."
   type        = string
-  default = "mysql-rds-password"
+  default     = "mysql-rds-password"
 }
 
 variable "db_settings" {

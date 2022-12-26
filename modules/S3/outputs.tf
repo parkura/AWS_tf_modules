@@ -23,7 +23,13 @@ output "aws_mykey_arn" {
   value       = aws_kms_key.mykey.arn
 }
 
-output "log_S3_bucket" {
+output "log_s3_bucket" {
   description = "Log S3 bucket name."
   value       = aws_s3_bucket_logging.log.bucket
 }
+
+output "s3_buckets" {
+  description = "Log S3 bucket name."
+  value       = aws_s3_bucket.buckets
+}
+

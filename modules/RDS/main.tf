@@ -22,4 +22,3 @@ resource "aws_db_instance" "mysql" {
   password               = data.aws_ssm_parameter.rds_password.value
   tags                   = var.tags
 }
- 

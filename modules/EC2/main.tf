@@ -1,4 +1,3 @@
-
 //AMI id of Amazon Linux
 data "aws_ami" "amazon-linux-2" {
   most_recent = true
@@ -24,5 +23,3 @@ resource "aws_instance" "web" {
   user_data              = file("${path.module}/web.sh")
   tags                   = var.tags
 }
-
-

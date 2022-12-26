@@ -40,7 +40,3 @@ resource "aws_autoscaling_attachment" "asg_attachment_bar" {
   autoscaling_group_name = aws_autoscaling_group.dev-asg.name
   lb_target_group_arn    = var.lb_target_group_arn
 }
-
-
-
-

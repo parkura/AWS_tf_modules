@@ -17,4 +17,4 @@ output "rds_password" {
   description = "DB instance password."
   value       = data.aws_ssm_parameter.rds_password.value
   sensitive   = true
-} 
+}

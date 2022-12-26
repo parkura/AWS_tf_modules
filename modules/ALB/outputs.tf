@@ -1,10 +1,10 @@
 
-output "Application_LB_URL" {
+output "application_lb_url" {
   description = "URL of the load balancer."
   value       = aws_lb.application-lb.dns_name
 }
 
-output "Application_LB_zone_id" {
+output "application_lb_zone_id" {
   description = "Zone ID of the load balancer."
   value       = aws_lb.application-lb.zone_id
 }
@@ -17,4 +17,4 @@ output "lb_target_group_arn" {
 output "lb_id" {
   description = "The ID and ARN of the load balancer."
   value       = aws_lb.application-lb.id
-} 
+}

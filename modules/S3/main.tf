@@ -63,7 +63,6 @@ resource "aws_kms_key" "mykey" {
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
-  //bucket = "${aws_s3_bucket.buckets[0].bucket}" //bucket1.vrtx-trp-22-12-13
   count  = length(var.s3_bucket_names)
   bucket = var.s3_bucket_names[count.index]
   rule {
@@ -73,4 +72,3 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
     }
   }
 }
-

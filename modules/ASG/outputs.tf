@@ -7,6 +7,3 @@ output "launch_configuration_name" {
   description = "The Name of the Launch Configuration"
   value       = aws_launch_configuration.for_asg.name
 }
-
-
-

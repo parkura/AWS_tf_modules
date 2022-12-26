@@ -36,11 +36,12 @@ variable "listener_settings" {
 variable "http_listener_default_action" {
   description = "HTTP listener default action type."
   type        = string
-  default = "redirect"
+  default     = "redirect"
 }
 
 variable "tags" {
   description = "tags of the load balancer & Target Geoup."
+  type        = map
   default = {
     Owner   = "Soso Kumladze"
     Project = "VRTX-TRP"
@@ -64,11 +65,13 @@ variable "security_groups" {
 
 variable "alb_name" {
   description = "Name of the load balancer."
+  type        = string
   default     = "dev-alb"
 }
 
 variable "alb_tg_name" {
   description = "Name of the load balancer target group."
+  type        = string
   default     = "dev-alb-tg"
 }
 
@@ -81,4 +84,3 @@ variable "certificate_arn" {
   description = "The ARN of the aws-ssl certificate"
   type        = string
 }
-

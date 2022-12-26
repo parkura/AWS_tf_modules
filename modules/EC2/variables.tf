@@ -28,6 +28,7 @@ variable "monitoring" {
 
 variable "tags" {
   description = "Web instance tags."
+  type        = map
   default = {
     Name = "web"
     env  = "dev"

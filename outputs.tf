@@ -24,11 +24,6 @@ output "aviability_zones" {
   value       = module.aws_vpc_dev.availability_zones
 }
 
-output "common_tags" {
-  description = "Common tags for this all modules."
-  value       = module.aws_vpc_dev.common_tags
-}
-
 output "ec2_sg_id" {
   description = "ID of the security group for ec2."
   value       = module.aws_vpc_dev.ec2_sg_id
@@ -44,48 +39,84 @@ output "db_sg_id" {
   value       = module.aws_vpc_dev.db_sg_id
 }
 
+#S3 bucket output
+output "s3_bucket_bucket_domain_name" {
+  description = "The bucket domain name. Will be of format bucketname.s3.amazonaws.com."
+  value       = module.aws_s3_bucket.s3_bucket_bucket_domain_name
+}
+
+output "s3_bucket_region" {
+  description = "The AWS region this bucket resides in."
+  value       = module.aws_s3_bucket.s3_bucket_region
+}
+
+output "s3_bucket_id" {
+  description = "The names of the buckets."
+  value       = module.aws_s3_bucket.s3_bucket_id
+}
+
+output "log_target_prefix" {
+  description = "S3 bucket log path."
+  value       = module.aws_s3_bucket.log_target_prefix
+}
+
+output "aws_mykey_arn" {
+  description = "S3 bucket kms_key arn."
+  value       = module.aws_s3_bucket.aws_mykey_arn
+}
+
+output "log_s3_bucket" {
+  description = "Log S3 bucket name."
+  value       = module.aws_s3_bucket.log_s3_bucket
+} 
+
+output "s3_buckets" {
+  description = "Log S3 bucket name."
+  value       = module.aws_s3_bucket.s3_buckets
+}
+
 #EC2 outputs
 output "instance_id" {
   description = "ID of the web ec2 instance."
-  value = module.aws_ec2_dev.instance_id
+  value       = module.aws_ec2_dev.instance_id
 }
 
 output "instance_ami" {
   description = "AMI of the web ec2 instance."
-  value = module.aws_ec2_dev.instance_ami
+  value       = module.aws_ec2_dev.instance_ami
 } 
 
 #ALB output
-output "Application_LB_URL" {
+output "application_lb_url" {
   description = "URL of the load balancer."
-  value = module.aws_alb_dev.Application_LB_URL
+  value       = module.aws_alb_dev.application_lb_url
 }
 
-output "Application_LB_zone_id" {
+output "application_lb_zone_id" {
   description = "Zone ID of the load balancer."
-  value = module.aws_alb_dev.Application_LB_zone_id
+  value       = module.aws_alb_dev.application_lb_zone_id
 }
 
 output "lb_target_group_arn" {
   description = "ARNs of the target groups. Useful for passing to your Auto Scaling group"
-  value = module.aws_alb_dev.lb_target_group_arn
+  value       = module.aws_alb_dev.lb_target_group_arn
 }
 
 output "lb_id" {
   description = "The ID and ARN of the load balancer."
-  value = module.aws_alb_dev.lb_id
+  value       = module.aws_alb_dev.lb_id
 } 
 
 #Route_53 output
 output "certificate_arn" {
   description = "The ARN of the aws-ssl certificate"
-  value = module.aws_route_53_dev.certificate_arn.arn
+  value       = module.aws_route_53_dev.certificate_arn.arn
 } 
 
 #ASG output
 output "autoscaling_group_name" {
   description = "The Name of the Auto Scaling Group."
-  value = module.aws_asg_dev.autoscaling_group_name
+  value       = module.aws_asg_dev.autoscaling_group_name
 }
 
 output "launch_configuration_name" {
@@ -114,34 +145,3 @@ output "rds_password" {
   value       = module.aws_rds_dev.rds_password
   sensitive   = true
 }
-
-#S3 bucket output
-output "s3_bucket_bucket_domain_name" {
-  description = "The bucket domain name. Will be of format bucketname.s3.amazonaws.com."
-  value = module.aws_s3_bucket.s3_bucket_bucket_domain_name
-}
-
-output "s3_bucket_region" {
-  description = "The AWS region this bucket resides in."
-  value = module.aws_s3_bucket.s3_bucket_region
-}
-
-output "s3_bucket_id" {
-  description = "The names of the buckets."
-  value = module.aws_s3_bucket.s3_bucket_id
-}
-
-output "log_target_prefix" {
-  description = "S3 bucket log path."
-  value = module.aws_s3_bucket.log_target_prefix
-}
-
-output "aws_mykey_arn" {
-  description = "S3 bucket kms_key arn."
-  value = module.aws_s3_bucket.aws_mykey_arn
-}
-
-output "log_S3_bucket" {
-  description = "Log S3 bucket name."
-  value = module.aws_s3_bucket.log_S3_bucket
-} 

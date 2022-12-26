@@ -48,7 +48,7 @@ resource "aws_nat_gateway" "nat" {
   allocation_id = aws_eip.nat[count.index].id
   subnet_id     = aws_subnet.public_subnets[count.index].id
   tags          = merge(var.tags, { Name = "${var.env}-nat-gw-${count.index + 1}" })
-}
+} 
 
 #--------------Private Subnets and Routing-------------------------
 resource "aws_subnet" "private_subnets" {

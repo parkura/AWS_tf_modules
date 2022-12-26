@@ -23,11 +23,6 @@ output "availability_zones" {
   value       = data.aws_availability_zones.available.all_availability_zones
 }
 
-output "common_tags" {
-  description = "Common tags for this module."
-  value       = var.tags
-}
-
 output "ec2_sg_id" {
   description = "ID  of the ec2 security group."
   value       = aws_security_group.web-ssh-http-https.id
@@ -41,4 +36,9 @@ output "alb_sg_id" {
 output "db_sg_id" {
   description = "ID  of the mysql security group."
   value       = aws_security_group.mysql_sg.id
+}
+
+output "common_tags" {
+  description = "Common tags for this module."
+  value       = var.tags
 }
