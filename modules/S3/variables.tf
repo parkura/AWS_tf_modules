@@ -53,13 +53,13 @@ variable "expiration" {
   default     = 90
 }
 
-variable "transition_to_STANDARD_IA" {
+variable "transition_to_standard_ia" {
   description = "Noncurrent version transition days for the class STANDARD_IA."
   type        = number
   default     = 30
 }
 
-variable "transition_to_GLACIER" {
+variable "transition_to_glacier" {
   description = "Noncurrent version transition days for the class GLACIER."
   type        = number
   default     = 60

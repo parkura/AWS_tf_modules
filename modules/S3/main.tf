@@ -44,12 +44,12 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
     }
 
     noncurrent_version_transition {
-      noncurrent_days = var.transition_to_STANDARD_IA
+      noncurrent_days = var.transition_to_standard_ia
       storage_class   = var.storage_class_from
     }
 
     noncurrent_version_transition {
-      noncurrent_days = var.transition_to_GLACIER
+      noncurrent_days = var.transition_to_glacier
       storage_class   = var.storage_class_to
     }
     status = "Enabled"

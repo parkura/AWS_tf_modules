@@ -1,5 +1,5 @@
 data "aws_route53_zone" "dns" {
-  name = var.dns-name
+  name = var.dns_name
 }
 
 #Create record in hosted zone for ACM Certificate Domain verification

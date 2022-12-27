@@ -29,7 +29,6 @@ output "log_s3_bucket" {
 }
 
 output "s3_buckets" {
-  description = "Log S3 bucket name."
+  description = "S3 bucket names."
   value       = aws_s3_bucket.buckets
 }
-

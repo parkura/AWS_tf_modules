@@ -1,4 +1,4 @@
-variable "dns-name" {
+variable "dns_name" {
   description = "The Domain name we use for web server"
   type        = string
   default     = "example.com"
