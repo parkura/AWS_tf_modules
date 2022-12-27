@@ -55,8 +55,6 @@
 | <a name="input_private_subnet_cidrs"></a> [private_subnet_cidrs](#input\_private_subnet_cidrs) | Private_subnet_ipv4_cidrs. | `list` | `[]` | no |
 
 
-
-
 ##VPC Outputs
 
 | Name | Description |
@@ -67,4 +65,3 @@
 | <a name="output_private_subnet_ids"></a> [private_subnet_ids](#output\_private_subnet_ids) | List of IDs of private subnets. |
 | <a name="output_availability_zones"></a> [availability_zones](#output\_availability_zones) | A list of availability zones to this module. |
 | <a name="output_ec2_sg_id"></a> [ec2_sg_id](#output\_ec2_sg_id) | ID  of the ec2 security group. |
-
