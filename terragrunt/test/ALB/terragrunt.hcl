@@ -14,7 +14,6 @@ dependency "ec2" {
   config_path = find_in_parent_folders("EC2")
 }
 
-
 inputs = {
   subnets         = dependency.vpc.outputs.private_subnet_ids
   vpc_id          = dependency.vpc.outputs.vpc_id
