@@ -1,5 +1,7 @@
 # AWS_tf_modules
 
+If you wish to run all tf modules at once in all env, cd /terragrunt  and run - "terragrunt run-all apply", to destroy - "terragrunt run-all destroy"
+
 ## Examples
 
 - [VPC](https://github.com/parkura/AWS_tf_modules/tree/main/modules/VPC)
